@@ -38,8 +38,7 @@ case $TERM in
     alias weechat='weechatargs';
     alias newsboat='newsboatargs';
     alias ssh='kitty +kitten ssh';
-    alias nvim="vim";
-    alias ranger='ranger-fix';;
+    alias nvim="vim";;
   linux)
     alias vim="nvim";;
   *)
