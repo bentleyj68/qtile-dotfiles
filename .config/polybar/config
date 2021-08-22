@@ -442,24 +442,24 @@ interval = 30
 
 [module/custom-brightness]
 type = custom/script
-exec = ~/.local/bin/statusbar/brightnesscontrol
+exec = ~/.local/bin/polybar/brightnesscontrol
 interval = 1
-click-left = ~/.local/bin/statusbar/brightnesscontrol down
-click-right = ~/.local/bin/statusbar/brightnesscontrol up
+click-left = ~/.local/bin/polybar/brightnesscontrol down
+click-right = ~/.local/bin/polybar/brightnesscontrol up
 
 [module/custom-volume]
 type = custom/script
-exec = ~/.local/bin/statusbar/volumecontrol
+exec = ~/.local/bin/polybar/volumecontrol
 interval = 1
-click-left = ~/.local/bin/statusbar/volumecontrol down
-click-right = ~/.local/bin/statusbar/volumecontrol up
-click-middle = ~/.local/bin/statusbar/volumecontrol mute
+click-left = ~/.local/bin/polybar/volumecontrol down
+click-right = ~/.local/bin/polybar/volumecontrol up
+click-middle = ~/.local/bin/polybar/volumecontrol mute
 
 [module/custom-network]
 type = custom/script
-exec = ~/.local/bin/statusbar/network.sh
+exec = ~/.local/bin/polybar/network.sh
 interval = 1
-click-left = ~/.local/bin/statusbar/network.sh ShowInfo
+click-left = ~/.local/bin/polybar/network.sh ShowInfo
 click-right = kitty -e "nmtui"
 
 [settings]
