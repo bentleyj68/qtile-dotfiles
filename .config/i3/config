@@ -45,6 +45,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Start Nitrogen
 exec --no-startup-id nitrogen --restore
+
 # Start Picom
 exec --no-startup-id picom 
 
