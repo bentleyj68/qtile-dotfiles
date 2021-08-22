@@ -1,0 +1,107 @@
+#!/bin/bash
+
+# You can call this script like this:
+# volumecontrol up
+# volumecontrol down
+# volumecontrol mute
+
+function get_volume {
+    amixer -D pulse get Master | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1
+}
+
+function is_mute {
+    amixer -D pulse get Master | grep '%' | grep -oE '[^ ]+$' | grep off > /dev/null
+}
+
+function send_notification {
+    volume=`get_volume`
+    # Make the bar with the special character ─ (it's not dash -)
+    # https://en.wikipedia.org/wiki/Box-drawing_character
+if [ "$volume" = "0" ]; then
+        icon_name="/usr/share/icons/Adwaita/16x16/legacy/audio-volume-muted.png"
+dunstify -i "$icon_name" -r 5556 -u normal "$volume"
+    else
+	if [  "$volume" -lt "10" ]; then
+	     icon_name="/usr/share/icons/Adwaita/16x16/legacy/audio-volume-low.png"
+dunstify -i "$icon_name" -r 5556 -u normal "$volume"
+    else
+        if [ "$volume" -lt "30" ]; then
+            icon_name="/usr/share/icons/Adwaita/16x16/legacy/audio-volume-low.png"
+        else
+            if [ "$volume" -lt "70" ]; then
+                icon_name="/usr/share/icons/Adwaita/16x16/legacy/audio-volume-medium.png"
+            else
+                icon_name="/usr/share/icons/Adwaita/16x16/legacy/audio-volume-high.png"
+            fi
+        fi
+    fi
+fi
+bar=$(seq -s "─" $(($volume/5)) | sed 's/[0-9]//g')
+# Send the notification
+dunstify -i "$icon_name" -r 5556 -u normal "$bar  $volume"
+}
+
+case $1 in
+    up)
+	# Set the volume on (if it was muted)
+	amixer -D pulse set Master on > /dev/null
+	# Up the volume (+ 2%)
+	amixer -D pulse sset Master 2%+ > /dev/null
+	send_notification
+	canberra-gtk-play -i audio-volume-change
+	;;
+    down)
+	amixer -D pulse set Master on > /dev/null
+	amixer -D pulse sset Master 2%- > /dev/null
+	send_notification
+	canberra-gtk-play -i audio-volume-change
+	;;
+    mute)
+    	# Toggle mute
+	amixer -D pulse set Master 1+ toggle > /dev/null
+	if is_mute ; then
+	dunstify -i "/usr/share/icons/Adwaita/16x16/legacy/audio-volume-muted.png" -r 5556 -u normal "$bar Audio Muted"
+	else
+	    send_notification
+	    canberra-gtk-play -i audio-volume-change
+	fi
+	;;
+    *)
+  volume="$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))%"
+
+	if [[ "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" == "100" ]]; then
+		icon=""
+	elif [[ "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -ge "89" && "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -le "100" ]]; then
+		icon=""
+	elif [[ "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -ge "79" && "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -le "90" ]]; then
+		icon=""
+	elif [[ "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -ge "69" && "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -le "80" ]]; then
+		icon="墳"
+	elif [[ "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -ge "59" && "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -le "70" ]]; then
+		icon="墳"
+	elif [[ "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -ge "49" && "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -le "60" ]]; then
+		icon="墳"
+	elif [[ "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -ge "39" && "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -le "50" ]]; then
+		icon="墳"
+	elif [[ "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -ge "29" && "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -le "40" ]]; then
+		icon=""
+	elif [[ "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -ge "19" && "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -le "30" ]]; then
+		icon=""
+	elif [[ "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -ge "9" && "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -le "20" ]]; then
+		icon=""
+	elif [[ "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -gt "0" && "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -le "10" ]]; then
+		icon=""
+	elif [[ "$(awk -F"[]%[]" '/Left:/ { print $2 }' <(amixer sget Master))" -eq "0" ]]; then
+		icon="婢"
+		volume=" M "
+	fi
+
+
+if [[ "$(awk -F"[][]" '/Left:/ { print $4 }' <(amixer sget Master))" == "off" ]]; then
+		icon="婢"
+		volume=" M "
+fi
+
+printf "%s" "$icon $volume"
+  ;;
+esac
