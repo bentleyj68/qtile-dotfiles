@@ -430,7 +430,7 @@ label =
 [module/custom-date]
 type = custom/script
 exec = ~/.local/bin/polybar/date-time.sh
-interval = 60
+interval = 30
 
 [settings]
 screenchange-reload = true
