@@ -17,12 +17,12 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #222
+; Format #AARRGGBB
+background = #D0222222
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
-foreground-alt = #555
+foreground-alt = #fee
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -34,7 +34,7 @@ height = 27
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -51,16 +51,16 @@ border-color = #00000000
 padding-left = 0
 padding-right = 2
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 0
+module-margin-right = 1
 
-font-0 = fixed:pixelsize=10;1
+font-0 = FiraCode Nerd Font:style=Regular:pixelsize-10
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = i3
-modules-center = mpd
-modules-right = arch-updates filesystem backlight-acpi alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-center = custom-date
+modules-right = arch-updates mpd backlight-acpi wlan eth battery temperature
 
 tray-position = right
 tray-padding = 2
@@ -420,7 +420,12 @@ menu-2-1-exec = menu-open-0
 type = custom/script
 exec = ~/.local/bin/polybar/arch-updates.sh
 interval = 600
-click-left = kitty -e "paru" & ~/.local/bin/polybar/arch-updates.sh
+click-left = kitty -e "paru"
+
+[module/custom-date]
+type = custom/script
+exec = ~/.local/bin/polybar/date-time.sh
+interval = 60
 
 [settings]
 screenchange-reload = true
