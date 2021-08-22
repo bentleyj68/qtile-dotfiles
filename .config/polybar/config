@@ -144,7 +144,7 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
@@ -152,11 +152,11 @@ label-mode-background = ${colors.primary}
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 2
+label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
@@ -416,11 +416,16 @@ menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
+[module/updates_ipc]
+type = custom/ipc
+hook-0 = ~/.local/bin/polybar/arch-updates.sh show
+click-left = kitty -e "paru" && polybar-msg hook updates_ipc 1
+
 [module/arch-updates]
 type = custom/script
-exec = ~/.local/bin/polybar/arch-updates.sh
+exec = polybar-msg hook updates_ipc 1
 interval = 600
-click-left = kitty -e "paru"
+label =
 
 [module/custom-date]
 type = custom/script
