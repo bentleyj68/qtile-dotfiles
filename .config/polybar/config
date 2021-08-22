@@ -60,7 +60,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = i3
 modules-center = custom-date
-modules-right = arch-updates arch-updates-ipc mpd backlight-acpi wlan eth battery temperature
+modules-right = arch-updates arch-updates-ipc player-mpris-tail backlight-acpi wlan eth battery temperature
 
 tray-position = right
 tray-padding = 2
@@ -185,6 +185,14 @@ icon-next = 
 
 label-song-maxlen = 25
 label-song-ellipsis = true
+
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.local/bin/polybar/player-mpris-tail.py -f '{icon} {artist} - {title}' --icon-playing 'P' --icon-paused '=' --icon-stopped 'S'
+tail = true
+click-left = ~/.local/bin/polybar/player-mpris-tail.py previous &
+click-right = ~/.local/bin/polybar/player-mpris-tail.py next &
+click-middle = ~/.local/bin/polybar/player-mpris-tail.py play-pause &
 
 [module/xbacklight]
 type = internal/xbacklight
