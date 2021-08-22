@@ -60,7 +60,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = i3
 modules-center = custom-date
-modules-right = arch-updates arch-updates-ipc player-mpris-tail backlight-acpi wlan eth battery temperature
+modules-right = arch-updates arch-updates-ipc player-mpris-tail custom-volume custom-brightness custom-network battery 
 
 tray-position = right
 tray-padding = 2
@@ -439,6 +439,28 @@ label =
 type = custom/script
 exec = ~/.local/bin/polybar/date-time.sh
 interval = 30
+
+[module/custom-brightness]
+type = custom/script
+exec = ~/.local/bin/statusbar/brightnesscontrol
+interval = 1
+click-left = ~/.local/bin/statusbar/brightnesscontrol down
+click-right = ~/.local/bin/statusbar/brightnesscontrol up
+
+[module/custom-volume]
+type = custom/script
+exec = ~/.local/bin/statusbar/volumecontrol
+interval = 1
+click-left = ~/.local/bin/statusbar/volumecontrol down
+click-right = ~/.local/bin/statusbar/volumecontrol up
+click-middle = ~/.local/bin/statusbar/volumecontrol mute
+
+[module/custom-network]
+type = custom/script
+exec = ~/.local/bin/statusbar/network.sh
+interval = 1
+click-left = ~/.local/bin/statusbar/network.sh ShowInfo
+click-right = kitty -e "nmtui"
 
 [settings]
 screenchange-reload = true
