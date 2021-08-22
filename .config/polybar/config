@@ -425,7 +425,7 @@ click-left = kitty -e "paru" && polybar-msg hook updates_ipc 1
 type = custom/script
 exec = polybar-msg hook updates_ipc 1
 interval = 600
-label =
+label = 
 
 [module/custom-date]
 type = custom/script
