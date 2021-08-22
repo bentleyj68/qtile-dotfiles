@@ -60,7 +60,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = i3
 modules-center = custom-date
-modules-right = arch-updates updates_ipc mpd backlight-acpi wlan eth battery temperature
+modules-right = arch-updates arch-updates-ipc mpd backlight-acpi wlan eth battery temperature
 
 tray-position = right
 tray-padding = 2
@@ -416,14 +416,14 @@ menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
-[module/updates_ipc]
+[module/arch-updates_ipc]
 type = custom/ipc
 hook-0 = ~/.local/bin/polybar/arch-updates.sh
-click-left = kitty -e "paru" && polybar-msg hook updates_ipc 1
+click-left = kitty -e "paru" && polybar-msg hook arch-updates-ipc 1
 
 [module/arch-updates]
 type = custom/script
-exec = polybar-msg hook updates_ipc 1
+exec = polybar-msg hook arch-updates-ipc 1
 interval = 600
 label = 
 
