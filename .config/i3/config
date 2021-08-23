@@ -56,6 +56,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh &
 for_window [class="^.*"] border pixel 2
 #smart_gaps on
 
+gaps top 35
 gaps inner 10
 #gaps outer 10
 
@@ -131,8 +132,8 @@ bindsym $mod+h split h
 # split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+# enter fullscreen mode for the focused container and toggle polybar
+bindsym $mod+f fullscreen toggle; exec polybar-msg cmd toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
