@@ -60,16 +60,16 @@ gaps inner 10
 #gaps outer 10
 
 # Keybindings for audio
-bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/statusbar/volumecontrol mute
+bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/polybar/volumecontrol mute
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/statusbar/volumecontrol up
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/polybar/volumecontrol up
 
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/statusbar/volumecontrol down
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/polybar/volumecontrol down
 
 # Keybindings for brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/statusbar/brightnesscontrol up
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/polybarl/brightnesscontrol up
 
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/statusbar/brightnesscontrol down
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/polybar/brightnesscontrol down
 
 # Screenshot key bindings
 
