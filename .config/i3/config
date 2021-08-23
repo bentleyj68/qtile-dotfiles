@@ -232,3 +232,4 @@ bindsym $mod+r mode "resize"
 #        font pango:FiraCode Nerd Font SemiBold 12
 #        status_command i3status
 #}
+
