@@ -50,7 +50,7 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id picom 
 
 # Launch Polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 # Gaps settings
 for_window [class="^.*"] border pixel 2
@@ -67,7 +67,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/polybar/volumecon
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/polybar/volumecontrol down
 
 # Keybindings for brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/polybarl/brightnesscontrol up
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/polybar/brightnesscontrol up
 
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/polybar/brightnesscontrol down
 
