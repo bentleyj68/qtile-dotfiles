@@ -50,7 +50,7 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id picom 
 
 # Launch Polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh &
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Gaps settings
 for_window [class="^.*"] border pixel 2
