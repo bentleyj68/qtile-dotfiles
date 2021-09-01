@@ -19,7 +19,7 @@ configuration {
 }
 
 window {
-	width: 50ch;
+	width: 20ch;
 	border: 0;
     border-radius: 4px;
 	orientation: horizontal;
@@ -49,11 +49,12 @@ inputbar {
 }
 
 listview {
+		lines: 6;
 		fixed-height: 0;
     border: 0px;
     spacing: 5px;
     scrollbar: false;
-    padding: 10px 10px 0px;
+    padding: 10px 0 10px 1ch;
 }
 
 element {
@@ -81,5 +82,5 @@ mode-switcher {
 
 textbox {
   background-color: #3fa9f4;
-  padding: 8px;
+  padding: 8px 0 8px 5ch;
 	}
