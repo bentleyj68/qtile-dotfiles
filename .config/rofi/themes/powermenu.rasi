@@ -1,14 +1,11 @@
 configuration {
-	display-drun:   "Apps";
-	display-window: "Window";
-	show-icons:     true;
-	sidebar-mode:   true;
+	show-icons:     false;
 }
 
 * {
 	background-color: #002c3e50;
 	text-color:       #EFEFEF;
-    font: "FiraCode Nerd Font 12";
+  font: "FiraCode Nerd Font 12";
  
 	line-margin:     0;
 	line-padding:    0;
@@ -21,15 +18,15 @@ configuration {
 window {
 	width: 20ch;
 	border: 0;
-    border-radius: 4px;
+  border-radius: 4px;
 	orientation: horizontal;
 	children:	 [mainbox];
 }
 
 mainbox {
-	children: [entry,listview,mode-switcher,message];
+		children: [entry,listview,mode-switcher,message];
     spacing: 0px;
-    padding: 0px 0;
+    padding: 0px;
     border: 1px;
     border-color: @base0D;
 }
@@ -49,19 +46,20 @@ inputbar {
 }
 
 listview {
+		background-color: #002c3e50;
 		lines: 6;
 		fixed-height: 0;
     border: 0px;
-    spacing: 5px;
+    spacing: 0px;
     scrollbar: false;
-    padding: 10px 0 10px 1ch;
+    padding: 10px 10px 10px 1ch;
 }
 
 element {
-	background-color: #00000000;
+	  background-color: #00000000;
     border: 0;
     border-radius: 0px;
-    padding: 3 0 3 4 ;
+    padding: 3 ;
 }
 
 entry {
@@ -83,4 +81,8 @@ mode-switcher {
 textbox {
   background-color: #3fa9f4;
   padding: 8px 0 8px 5ch;
-	}
+}
+
+element-text {
+  background-color: #00000000;
+}

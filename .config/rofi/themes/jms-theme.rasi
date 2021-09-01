@@ -53,7 +53,7 @@ listview {
     border: 0px;
     spacing: 5px;
     scrollbar: false;
-    padding: 10px 10px 0px;
+    padding: 10px 10px 10px 1ch;
 }
 
 element {
@@ -83,3 +83,12 @@ textbox {
   background-color: #3fa9f4;
   padding: 8px;
 	}
+
+element-text {
+	background-color:#00000000;
+}
+
+element-icon {
+	background-color: #00000000;
+}
+
