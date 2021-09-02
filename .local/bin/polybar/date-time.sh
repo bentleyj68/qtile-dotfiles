@@ -7,6 +7,6 @@ DaySuffix() {
     *)       echo "th";;
   esac
 }
-date=$(date "+%A %d`DaySuffix` %B %Y - %H:%M")
+date=$(date "+%A %-d`DaySuffix` %B %Y - %H:%M")
 icon=""
 printf "%s" "$date"
