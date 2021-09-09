@@ -128,7 +128,7 @@ let g:startify_lists = [
 
 let g:startify_bookmarks = [
             \ { 'b': '~/.bashrc' },
-            \ { 'c': '~/.config/i3/config' },
+            \ { 'c': '~/.config/qtile/config.py' },
             \ { 'i': '~/.config/nvim/init.vim' },
             \ { 'p': '~/.config/qutebrowser/config.py' },
             \ ]
