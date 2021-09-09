@@ -37,6 +37,7 @@ case $TERM in
     alias vim='vimargs';
     alias weechat='weechatargs';
     alias newsboat='newsboatargs';
+    alias ranger='rangerargs';
     alias ssh='kitty +kitten ssh';
     alias nvim="vim";;
   linux)
@@ -74,6 +75,11 @@ weechatargs() {
 newsboatargs() {
     #do things with parameters like $1 such as  
   (kitty --class newsboat -e newsboat "$@" & ) > /dev/null 2>&1 
+}
+
+rangerargs() {
+  #do things with parameters like $1 such as
+  (kitty --class ranger -e ranger "$@" & ) > /dev/null 2>&1
 }
 
 # startx if on matching VT
