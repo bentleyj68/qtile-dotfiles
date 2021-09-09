@@ -1,5 +1,5 @@
-# Various dotfiles for my [i3-gaps](https://i3wm.org/) setup.
-i3 is a tiling window manager, completely written from scratch. The target platforms are GNU/Linux and BSD operating systems, our code is Free and Open Source Software (FOSS) under the BSD license. i3 is primarily targeted at advanced users and developers.
+# Various dotfiles for my [Qtile](https://qtile.org/) setup.
+A full-featured, hackable tiling window manager written and configured in Python
 
 ![ScreenShot](screenshot.jpg)
 
@@ -10,8 +10,7 @@ Below is a list of some of the packages that I use for my current setup.
 - **Operating System** --- [Archlinux](https://www.archlinux.org/)
 - **AUR Helper** --- [Paru](https://aur.archlinux.org/packages/paru-git/)
 - **Boot Loader** --- [Grub](https://wiki.archlinux.org/index.php/GRUB)
-- **Window Manager** --- [i3-gaps](https://aur.archlinux.org/packages/i3-gaps-next-git)
-- **Bar** --- [Polybar](https://aur.archlinux.org/packages/polybar-git)
+- **Window Manager** --- [Qtile](https://aur.archlinux.org/packages/qtile-git)
 - **Screen Locker** --- [Betterlockscreen](https://aur.archlinux.org/packages/betterlockscreen)
 - **Shell** --- [Bash](https://wiki.archlinux.org/index.php/Bash) using [Starship](https://aur.archlinux.org/packages/starship-git/) 
 - **Terminal** --- [Kitty](https://wiki.archlinux.org/index.php/Kitty)
@@ -43,9 +42,9 @@ Below is a list of some of the packages that I use for my current setup.
 ### Window manager controls
 | Keys                                 | Action                    |
 | ------------------------------------ | ------------------------- |
-| <kbd>SHIFT + MOD + r</kbd>           | restart i3wm              |
-| <kbd>SHIFT + MOD + e</kbd>           | shutdown i3wm             |
-| <kbd>SHIFT + MOD + q</kbd>           | kill window               |
+| <kbd>CTRL + MOD + r</kbd>            | restart Qtile             |
+| <kbd>CTRL + MOD + q</kbd>            | shutdown Qtile            |
+| <kbd>MOD + w</kbd>                   | kill window               |
 | <kbd>MOD + RETURN</kbd>              | spawn terminal            |
-| <kbd>MOD + D</kbd>                   | Rofi menu                 |
+| <kbd>CTRL + Space</kbd>              | Rofi menu                 |
 | <kbd>CTRL + MOD + p</kbd>            | Rofi power menu           |
