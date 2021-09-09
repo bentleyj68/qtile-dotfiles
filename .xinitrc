@@ -32,4 +32,4 @@ fi
 # unset f
 #fi
 setxkbmap -layout gb
-exec i3
+exec qtile start 
