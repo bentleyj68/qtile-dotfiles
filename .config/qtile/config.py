@@ -215,7 +215,8 @@ keys = [
     # Toggle Fullscreen
     Key([mod], "f",
         lazy.window.toggle_fullscreen(),
-        desc='toggle fullscreen'
+        lazy.hide_show_bar(position='all'),
+        desc='Toggle fullscreen and the bars'
         ),
 
     # Switch window focus to other pane(s) of stack
