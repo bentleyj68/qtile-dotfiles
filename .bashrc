@@ -63,22 +63,30 @@ export FZF_DEFAULT_OPTS="--color='bg:#000000,bg+:#000000,info:#00EE00,border:#6B
         --color='pointer:#0000ff,marker:#E17899,prompt:#98BEDE,hl+:#98BC99'"
 
 vimargs() {
-    #do things with parameters like $1 such as
-   (kitty --class vim -e nvim "$@" & ) > /dev/null 2>&1
+  #do things with parameters like $1 such as
+  COLUMNS=
+  LINES=
+  (kitty --class vim -e nvim "$@" & ) > /dev/null 2>&1
 }
 
 weechatargs() {
-      #do things with parameters like $1 such as
-     (kitty --class weechat -e weechat "$@" & ) > /dev/null 2>&1
-  }
+  #do things with parameters like $1 such as
+  COLUMNS=
+  LINES=
+  (kitty --class weechat -e weechat "$@" & ) > /dev/null 2>&1
+}
 
 newsboatargs() {
-    #do things with parameters like $1 such as  
+  #do things with parameters like $1 such as
+  COLUMNS=
+  LINES=
   (kitty --class newsboat -e newsboat "$@" & ) > /dev/null 2>&1 
 }
 
 rangerargs() {
-  #do things with parameters like $1 such as
+  #do thngs with parameters like $1 such as
+  COLUMNS=
+  LINES=
   (kitty --class ranger -e ranger "$@" & ) > /dev/null 2>&1
 }
 
