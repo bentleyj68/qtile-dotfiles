@@ -65,7 +65,7 @@ def fallback(window):
         if group.windows:
             qtile.current_screen.toggle_group(group)
             return
-        qtile.current_screen.toggle_group(qtile.groups[0])
+    qtile.current_screen.toggle_group(qtile.groups[0])
 
 # Work around for matching Spotify
 
