@@ -35,7 +35,7 @@ mainbox {
 }
 
 button {
-	padding: 8px 2px;
+	padding: 8px 2px 8px 9ch;
 }
 
 button selected {
