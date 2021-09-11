@@ -390,7 +390,7 @@ layouts = [
 
 widget_defaults = dict(
     font='FiraCode Nerd Font Regular',
-    fontsize='14',
+    fontsize='12',
     padding=2,
 )
 extension_defaults = widget_defaults.copy()
@@ -400,7 +400,7 @@ screens = [
         top=bar.Bar(
             [
                 widget.Spacer(length=10),
-                widget.GroupBox(borderwidth=2, inactive='969696', this_current_screen_border='eee8d5', this_screen_border='eee8d5', font='FiraCode Nerd Font', fontsize=20, highlight_method='line', highlight_color=['00000000', '00000000']),
+                widget.GroupBox(borderwidth=2, inactive='969696', this_current_screen_border='eee8d5', this_screen_border='eee8d5', font='FiraCode Nerd Font', fontsize=18, highlight_method='line', highlight_color=['00000000', '00000000']),
                 widget.CurrentLayoutIcon(scale=0.7),
                 widget.CurrentLayout(**widget_defaults),
                 widget.Prompt(**widget_defaults),
@@ -430,10 +430,11 @@ screens = [
                 widget.GenPollText(update_interval=1, **widget_defaults, func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/volumecontrol")).decode(), mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/volumecontrol down"), shell=True), 'Button2': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/volumecontrol mute"), shell=True), 'Button3': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/volumecontrol up"), shell=True)}),
                 widget.Spacer(length=5),
                 widget.GenPollText(update_interval=1, **widget_defaults, func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/battery.sh")).decode()),
+                widget.Spacer(length=5),
                 widget.GenPollText(update_interval=1, **widget_defaults, func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/network.sh")).decode(), mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/network.sh ShowInfo"), shell=True), 'Button3': lambda: qtile.cmd_spawn(terminal + ' -e nmtui', shell=True)}),
                 widget.Spacer(length=10),
             ],
-            30, background="#000000AA", margin=[10, 16, 0, 16]  # N E S W
+            28, background="#000000AA", margin=[10, 16, 0, 16]  # N E S W
         ),
     ),
 ]
