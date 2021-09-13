@@ -37,7 +37,7 @@ import os
 import subprocess
 import time
 # from libqtile.utils import send_notification
-
+from libqtile.log_utils import logger
 # When application launched automatically focus it's group
 
 
@@ -58,10 +58,10 @@ def modify_window(client):
 
 @hook.subscribe.client_killed
 def fallback(window):
-    if window.group.windows != {window}:
+    if window.group.windows != [window]:
         return
-
-    for group in qtile.groups:
+    idx = qtile.groups.index(window.group)
+    for group in qtile.groups[idx - 1::-1]:
         if group.windows:
             qtile.current_screen.toggle_group(group)
             return
