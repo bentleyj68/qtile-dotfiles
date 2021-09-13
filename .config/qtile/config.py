@@ -38,6 +38,7 @@ import subprocess
 import time
 # from libqtile.utils import send_notification
 from libqtile.log_utils import logger
+
 # When application launched automatically focus it's group
 
 
@@ -148,59 +149,59 @@ keys = [
         lazy.layout.shuffle_up(),
         desc='Shuffle up'
         ),
-	Key([mod, "shift"], "h",
-     lazy.layout.shuffle_left(),
-     desc='Shuffle left'
-     ),
-	Key([mod, "shift"], "l",
-     lazy.layout.shuffle_right(),
-     desc='Shuffle right'
-     ),
-	Key([mod, "mod1"], "j",
-     lazy.layout.flip_down(),
-     desc='Flip down'
-     ),
-	Key([mod, "mod1"], "k",
-     lazy.layout.flip_up(),
-     desc='Flip up'
-     ),
-	Key([mod, "mod1"], "h",
-     lazy.layout.flip_left(),
-     desc='Flip left'
-     ),
-	Key([mod, "mod1"], "l",
-     lazy.layout.flip_right(),
-     desc='Flip right'
-     ),
-	Key([mod, "control"], "j",
-     lazy.layout.grow_down(),
-     desc='Grow down'
-     ),
-	Key([mod, "control"], "k",
-     lazy.layout.grow_up(),
-     desc='Grow up'
-     ),
-	Key([mod, "control"], "h",
-     lazy.layout.grow_left(),
-     desc='Grow left'
-     ),
-	Key([mod, "control"], "l",
-     lazy.layout.grow_right(),
-     desc='Grow right'
-     ),
-	Key([mod], "n",
-     lazy.layout.normalize(),
-     desc='normalize window size ratios'
-     ),
+    Key([mod, "shift"], "h",
+        lazy.layout.shuffle_left(),
+        desc='Shuffle left'
+        ),
+    Key([mod, "shift"], "l",
+        lazy.layout.shuffle_right(),
+        desc='Shuffle right'
+        ),
+    Key([mod, "mod1"], "j",
+        lazy.layout.flip_down(),
+        desc='Flip down'
+        ),
+    Key([mod, "mod1"], "k",
+        lazy.layout.flip_up(),
+        desc='Flip up'
+        ),
+    Key([mod, "mod1"], "h",
+        lazy.layout.flip_left(),
+        desc='Flip left'
+        ),
+    Key([mod, "mod1"], "l",
+        lazy.layout.flip_right(),
+        desc='Flip right'
+        ),
+    Key([mod, "control"], "j",
+        lazy.layout.grow_down(),
+        desc='Grow down'
+        ),
+    Key([mod, "control"], "k",
+        lazy.layout.grow_up(),
+        desc='Grow up'
+        ),
+    Key([mod, "control"], "h",
+        lazy.layout.grow_left(),
+        desc='Grow left'
+        ),
+    Key([mod, "control"], "l",
+        lazy.layout.grow_right(),
+        desc='Grow right'
+        ),
+    Key([mod], "n",
+        lazy.layout.normalize(),
+        desc='normalize window size ratios'
+        ),
     Key([mod], "m",
         lazy.layout.maximize(),
         desc='toggle window between minimum and maximum sizes'
         ),
-	Key([mod], "h",
-     lazy.layout.grow(),
-     lazy.layout.increase_nmaster(),
-     desc='Expand window (MonadTall), increase number in master pane (Tile)'
-     ),
+    Key([mod], "h",
+        lazy.layout.grow(),
+        lazy.layout.increase_nmaster(),
+        desc='Expand window (MonadTall), increase number in master pane (Tile)'
+        ),
     Key([mod], "l",
         lazy.layout.shrink(),
         lazy.layout.decrease_nmaster(),
@@ -334,14 +335,14 @@ keys = [
         ),
     # Save screen to screenshots folder
     Key([mod], "Print",
-     lazy.spawn("/usr/bin/escrotum " + home + "/Pictures/Screenshots/screenshot_%d_%m_%Y_%H_%M_%S.png"),
-     desc='Save screen to screenshots folder'
-     ),
+        lazy.spawn("/usr/bin/escrotum " + home + "/Pictures/Screenshots/screenshot_%d_%m_%Y_%H_%M_%S.png"),
+        desc='Save screen to screenshots folder'
+        ),
     # Capture region of screen to clipboard
     Key([mod, "shift"], "s",
-     lazy.spawn("/usr/bin/escrotum -Cs"),
-     desc='Capture region of screen to clipboard'
-     ),
+        lazy.spawn("/usr/bin/escrotum -Cs"),
+        desc='Capture region of screen to clipboard'
+        ),
 ]
 
 # Groups with matches
@@ -408,14 +409,14 @@ screens = [
                 widget.GenPollText(func=custom_date, update_interval=1, **widget_defaults, mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/calendar.sh show"), shell=True), 'Button3': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/calendar.sh edit"), shell=True)}),
                 widget.Spacer(),
                 widget.CheckUpdates(
-                       **widget_defaults,
-                       update_interval=1800,
-                       distro='Arch_yay',
-                       custom_command='checkupdates;paru -Qum',
-                       display_format=' {updates}',
-                       colour_have_updates=GREEN,
-                       execute='kitty -e paru',
-                       ),
+                    **widget_defaults,
+                    update_interval=1800,
+                    distro='Arch_yay',
+                    custom_command='checkupdates;paru -Qum',
+                    display_format=' {updates}',
+                    colour_have_updates=GREEN,
+                    execute='kitty -e paru',
+                ),
                 widget.Mpris2(
                     name='spotify',
                     objname="org.mpris.MediaPlayer2.spotify",
