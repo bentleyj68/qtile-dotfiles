@@ -3,7 +3,7 @@ configuration {
 }
 
 * {
-	background-color: #002c3e50;
+	background-color: #00000050;
 	text-color:       #EFEFEF;
   font: "FiraCode Nerd Font 10";
  
@@ -52,7 +52,7 @@ listview {
     border: 0px;
     spacing: 0px;
     scrollbar: false;
-    padding: 10px 10px 10px 1ch;
+    padding: 10px 0px 10px 0ch;
 }
 
 element {
@@ -85,4 +85,5 @@ textbox {
 
 element-text {
   background-color: #00000000;
+	padding: 0 0 0 3ch;
 }

@@ -6,7 +6,7 @@ configuration {
 }
 
 * {
-	background-color: #002c3e50;
+	background-color: #00000050;
 	text-color:       #EFEFEF;
     font: "FiraCode Nerd Font 10";
  
