@@ -36,7 +36,7 @@ button {
 }
 
 button selected {
-	background-color: #3fa9f4;
+	background-color: #EFEFEF50;
 	text-color:       #EFEFEF;
 }
 
@@ -46,20 +46,19 @@ inputbar {
 }
 
 listview {
-		background-color: #002c3e50;
 		lines: 6;
 		fixed-height: 0;
     border: 0px;
     spacing: 0px;
     scrollbar: false;
-    padding: 10px 0px 10px 0ch;
+    padding: 0px 5px 0px 5px;
 }
 
 element {
 	  background-color: #00000000;
     border: 0;
     border-radius: 0px;
-    padding: 3 ;
+    padding: 3 0 3 4;
 }
 
 entry {
@@ -70,16 +69,16 @@ entry {
 }
 
 element selected {
-	background-color: #3fa9f4;
+	background-color: #EFEFEF50;
 	text-color:       #EFEFEF;
 }
 
 mode-switcher {
-	padding:        8 0 0 0;
+	padding: 8 0 0 0;
 }
 
 textbox {
-  background-color: #3fa9f4;
+  background-color: #EFEFEF50;
   padding: 8px 0 8px 5ch;
 }
 
