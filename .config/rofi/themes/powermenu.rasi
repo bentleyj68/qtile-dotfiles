@@ -17,7 +17,8 @@ configuration {
 
 window {
 	width: 20ch;
-	border: 0;
+	border: 1px;
+	border-color: #EFEFEF50;
   border-radius: 4px;
 	orientation: horizontal;
 	children:	 [mainbox];
