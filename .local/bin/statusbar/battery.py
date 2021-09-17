@@ -81,7 +81,6 @@ if args.command == "status":
 if args.command == "left-click":
     if not isPlugged:
         subprocess.call(["dunstify", "-r", "55555", "-u", "normal", "Est remaining time left: " + remaining])
-        exit()
     else:
         subprocess.call(["dunstify", "-r", "55555", "-u", "normal", str(percent) + "% Charged"])
 if args.command == "middle-click":
