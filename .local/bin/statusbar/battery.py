@@ -83,7 +83,6 @@ if args.command == "left-click":
         subprocess.call(["dunstify", "-r", "55555", "-u", "normal", "Est remaining time left: " + remaining])
         exit()
     else:
-        print(str(percent))
         subprocess.call(["dunstify", "-r", "55555", "-u", "normal", str(percent) + "% Charged"])
 if args.command == "middle-click":
     print("Middle click")
