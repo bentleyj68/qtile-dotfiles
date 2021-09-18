@@ -99,3 +99,5 @@ config.bind('xx', 'config-cycle statusbar.show never always;; config-cycle tabs.
 
 # Custom stylesheet for qt to set tab mouse hover info window font size
 c.qt.args += ['stylesheet=/home/justine/.config/qutebrowser/stylesheet.qss']
+
+c.content.autoplay = False
