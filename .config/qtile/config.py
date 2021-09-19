@@ -380,6 +380,7 @@ layouts = [
     # Try more layouts by unleashing below layouts.
     layout.Bsp(**layout_theme),
     layout.Columns(**layout_theme),
+    layout.Floating(**layout_theme),
     # layout.Matrix(),
     # layout.MonadWide(),
     # layout.RatioTile(),
