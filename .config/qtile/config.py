@@ -288,6 +288,13 @@ keys = [
         desc="Launch Rofi menu"
         ),
 
+    # Cycle through windows in the floating layout
+    Key([mod, "shift"], "i",
+        lazy.window.toggle_minimize(),
+        lazy.group.next_window(),
+        lazy.window.bring_to_front()
+        ),
+
     # ------------ Hardware Configs ------------
     # Volume
     Key([], "XF86AudioMute",
