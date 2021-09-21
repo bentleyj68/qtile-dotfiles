@@ -43,9 +43,9 @@ if cmd_exist nitrogen ; then
     __start nitrogen --restore
 fi
 
-# Network manager
+# Unclutter
 
-#if cmd_exist nm-applet ; then
-    #__kill nm-applet
-    #__start nm-applet
-#fi
+if cmd_exist unclutter ; then
+    __kill unclutter
+    __start unclutter
+fi
