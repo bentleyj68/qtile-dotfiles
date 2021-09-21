@@ -11,10 +11,16 @@ __kill() { kill -9 "$(pidof "$1")" >/dev/null 2>&1 ; }
 __start() { sleep 1 && "$@" >/dev/null 2>&1 & }
 __running() { pidof "$1" >/dev/null 2>&1 ;}
 
-# Set the wallpaper    
-#feh --bg-fill /home/justine/Pictures/Wallpapers/deer_art_vector_134088_3840x2160.jpg &
+# Set the wallpaper using either feh ir nitrogen
+#if cmd_exist feh ; then
+#    __kill feh
+#    __start feh --bg-fill /home/justine/Pictures/Wallpapers/deer_art_vector_134088_3840x2160.jpg
+#fi
 
-nitrogen --restore &
+if cmd_exist nitrogen ; then
+    __kill nitrogen
+    __start nitrogen --restore
+fi
 
 # Apps to autostart
 if cmd_exist picom ; then
