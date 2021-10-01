@@ -28,6 +28,7 @@ from typing import List  # noqa: F401
 from libqtile import qtile
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.layout.floating import Floating
 from libqtile.lazy import lazy
 # from libqtile.utils import guess_terminal
 from libqtile import hook
