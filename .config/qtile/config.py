@@ -27,7 +27,7 @@
 from typing import List  # noqa: F401
 from libqtile import qtile
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, EzKey, Group, Key, Match, Screen
 from libqtile.layout.floating import Floating
 from libqtile.lazy import lazy
 # from libqtile.utils import guess_terminal
@@ -39,6 +39,17 @@ import subprocess
 import time
 # from libqtile.utils import send_notification
 from libqtile.log_utils import logger
+
+# Get the number of connected screens
+
+
+def get_monitors():
+    xr = subprocess.check_output('xrandr --query | grep " connected"', shell=True).decode().split('\n')
+    monitors = len(xr) - 1 if len(xr) > 2 else len(xr)
+    return monitors
+
+
+monitors = get_monitors()
 
 # When application launched automatically focus it's group
 
@@ -374,6 +385,12 @@ for workspace in workspaces:
     groups.append(Group(workspace["name"], matches=matches, layout=layouts))
     keys.append(Key([mod], workspace["key"], lazy.group[workspace["name"]].toscreen()))
     keys.append(Key([mod, "shift"], workspace["key"], lazy.window.togroup(workspace["name"])))
+
+# Move window to screen with Mod, Alt and number
+
+
+for i in range(monitors):
+    keys.extend([EzKey("M-A-%s" % i, lazy.window.toscreen(i))])
 
 # DEFAULT THEME SETTINGS FOR LAYOUTS #
 layout_theme = {"border_width": 3,
