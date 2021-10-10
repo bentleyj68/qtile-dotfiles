@@ -32,4 +32,5 @@ fi
 # unset f
 #fi
 setxkbmap -layout gb
+autorandr --change
 exec qtile start 
