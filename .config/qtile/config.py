@@ -423,49 +423,67 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-screens = [
-    Screen(
-        top=bar.Bar(
-            [
-                widget.Spacer(length=10),
-                widget.GroupBox(borderwidth=2, inactive='969696', this_current_screen_border='eee8d5', this_screen_border='eee8d5', font='FiraCode Nerd Font', fontsize=18, highlight_method='line', highlight_color=['00000000', '00000000']),
-                widget.CurrentLayoutIcon(scale=0.7),
-                widget.CurrentLayout(**widget_defaults),
-                widget.Prompt(**widget_defaults),
-                widget.Spacer(),
-                widget.GenPollText(func=custom_date, update_interval=1, **widget_defaults, mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/calendar.sh show"), shell=True), 'Button3': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/calendar.sh edit"), shell=True)}),
-                widget.Spacer(),
-                widget.CheckUpdates(
-                    **widget_defaults,
-                    update_interval=1800,
-                    distro='Arch_yay',
-                    custom_command='checkupdates;paru -Qum',
-                    display_format=' {updates}',
-                    colour_have_updates=GREEN,
-                    execute='kitty -e paru',
+screens = []
+
+for monitor in range(monitors):
+    if monitor == 0:
+        screens.append(
+            Screen(
+                top=bar.Bar(
+                    [
+                        widget.Spacer(length=10),
+                        widget.GroupBox(borderwidth=2, inactive='969696', this_current_screen_border='eee8d5', this_screen_border='eee8d5', font='FiraCode Nerd Font', fontsize=18, highlight_method='line', highlight_color=['00000000', '00000000']),
+                        widget.CurrentLayoutIcon(scale=0.7),
+                        widget.CurrentLayout(**widget_defaults),
+                        widget.Prompt(**widget_defaults),
+                        widget.Spacer(),
+                        widget.GenPollText(func=custom_date, update_interval=1, **widget_defaults, mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/calendar.sh show"), shell=True), 'Button3': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/calendar.sh edit"), shell=True)}),
+                        widget.Spacer(),
+                        widget.CheckUpdates(
+                            **widget_defaults,
+                            update_interval=1800,
+                            distro='Arch_yay',
+                            custom_command='checkupdates;paru -Qum',
+                            display_format=' {updates}',
+                            colour_have_updates=GREEN,
+                            execute='kitty -e paru',
+                        ),
+                        widget.Mpris2(
+                            name='spotify',
+                            objname="org.mpris.MediaPlayer2.spotify",
+                            display_metadata=['xesam:title', 'xesam:artist'],
+                            scroll_chars=None,
+                            stop_pause_text='',
+                            **widget_defaults
+                        ),
+                        widget.Systray(),
+                        widget.GenPollText(update_interval=1, **widget_defaults, func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/brightnesscontrol")).decode(), mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/brightnesscontrol down"), shell=True), 'Button3': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/brightnesscontrol up"), shell=True)}),
+                        widget.Spacer(length=5),
+                        widget.GenPollText(update_interval=1, **widget_defaults, func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/volumecontrol")).decode(), mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/volumecontrol down"), shell=True), 'Button2': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/volumecontrol mute"), shell=True), 'Button3': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/volumecontrol up"), shell=True)}),
+                        widget.Spacer(length=5),
+                        widget.GenPollText(update_interval=1, **widget_defaults, func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/battery.py")).decode(), mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/battery.py --c left-click"), shell=True)}),
+                        widget.Spacer(length=5),
+                        widget.GenPollText(update_interval=1, **widget_defaults, func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/network.sh")).decode(), mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/network.sh ShowInfo"), shell=True), 'Button3': lambda: qtile.cmd_spawn(terminal + ' -e nmtui', shell=True)}),
+                        widget.Spacer(length=10),
+                    ],
+                    28, background="#000000AA", margin=[10, 16, 0, 16]  # N E S W
                 ),
-                widget.Mpris2(
-                    name='spotify',
-                    objname="org.mpris.MediaPlayer2.spotify",
-                    display_metadata=['xesam:title', 'xesam:artist'],
-                    scroll_chars=None,
-                    stop_pause_text='',
-                    **widget_defaults
-                ),
-                widget.Systray(),
-                widget.GenPollText(update_interval=1, **widget_defaults, func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/brightnesscontrol")).decode(), mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/brightnesscontrol down"), shell=True), 'Button3': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/brightnesscontrol up"), shell=True)}),
-                widget.Spacer(length=5),
-                widget.GenPollText(update_interval=1, **widget_defaults, func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/volumecontrol")).decode(), mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/volumecontrol down"), shell=True), 'Button2': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/volumecontrol mute"), shell=True), 'Button3': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/volumecontrol up"), shell=True)}),
-                widget.Spacer(length=5),
-                widget.GenPollText(update_interval=1, **widget_defaults, func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/battery.py")).decode(), mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/battery.py --c left-click"), shell=True)}),
-                widget.Spacer(length=5),
-                widget.GenPollText(update_interval=1, **widget_defaults, func=lambda: subprocess.check_output(os.path.expanduser("~/.local/bin/statusbar/network.sh")).decode(), mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/network.sh ShowInfo"), shell=True), 'Button3': lambda: qtile.cmd_spawn(terminal + ' -e nmtui', shell=True)}),
-                widget.Spacer(length=10),
-            ],
-            28, background="#000000AA", margin=[10, 16, 0, 16]  # N E S W
-        ),
-    ),
-]
+            )
+        )
+else:
+    screens.append(
+        Screen(
+            top=bar.Bar(
+                [
+                    widget.Spacer(),
+                    widget.GenPollText(func=custom_date, update_interval=1, **widget_defaults, mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/calendar.sh show"), shell=True), 'Bu      tton3': lambda: qtile.cmd_spawn(os.path.expanduser("~/.local/bin/statusbar/calendar.sh edit"), shell=True)}),
+                    widget.Spacer(),
+                ],
+                28, background="000000AA", margin=[10, 16, 0, 16]  # N E S W
+            ),
+        )
+    )
+
 
 # Drag floating layouts.
 mouse = [
