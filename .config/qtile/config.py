@@ -51,6 +51,15 @@ def get_monitors():
 
 monitors = get_monitors()
 
+# Run autorandr --change and restart Qtile on screen change
+
+
+@hook.subscribe.screen_change
+def set_screens(event):
+    subprocess.run(["autorandr", "--change"])
+    # lazy.spawn("mydock")
+    qtile.restart()
+
 # When application launched automatically focus it's group
 
 
