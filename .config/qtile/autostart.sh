@@ -40,13 +40,6 @@ if cmd_exist dunst ; then
     __start dunst
 fi
 
-# Wallpaper manager
-
-if cmd_exist nitrogen ; then
-    __kill nitrogen
-    __start nitrogen --restore
-fi
-
 # Unclutter
 
 if cmd_exist unclutter ; then
