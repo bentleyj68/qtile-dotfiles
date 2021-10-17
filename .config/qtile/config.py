@@ -27,7 +27,7 @@
 from typing import List  # noqa: F401
 from libqtile import qtile
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, EzKey, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.layout.floating import Floating
 from libqtile.lazy import lazy
 # from libqtile.utils import guess_terminal
@@ -396,7 +396,7 @@ for workspace in workspaces:
 
 
 for i in range(monitors):
-    keys.extend([EzKey("M-A-%s" % i, lazy.window.toscreen(i))])
+    keys.extend([Key([mod, "mod1"], str(i), lazy.window.toscreen(i))])
 
 # DEFAULT THEME SETTINGS FOR LAYOUTS #
 layout_theme = {"border_width": 3,
