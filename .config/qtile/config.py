@@ -65,9 +65,6 @@ def set_screens(event):
 
 @hook.subscribe.client_new
 def modify_window(client):
-    # if (client.window.get_wm_transient_for() or client.window.get_wm_type() in floating_types):
-    #    client.floating = True
-
     for group in groups:  # follow on auto-move
         match = next((m for m in group.matches if m.compare(client)), None)
         if match:
@@ -99,7 +96,7 @@ def slight_delay(window):
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~')
+    # home = os.path.expanduser('~')
     subprocess.Popen([home + '/.config/qtile/autostart.sh'])
 
 # Add th, nd or st to the date - use custom_date in text box
