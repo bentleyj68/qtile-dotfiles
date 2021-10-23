@@ -6,6 +6,7 @@ A full-featured, hackable tiling window manager written and configured in Python
 ## Details
 
 Below is a list of some of the packages that I use for my current setup.
+Please note that I use the latest Qtile from their GitHub repo using the AUR [Qtile](https://aur.archlinux.org/packages/qtile-git)
 
 - **Operating System** --- [Archlinux](https://www.archlinux.org/)
 - **AUR Helper** --- [Paru](https://aur.archlinux.org/packages/paru-git/)
