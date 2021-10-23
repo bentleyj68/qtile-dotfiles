@@ -34,12 +34,8 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Only use aliases according to the TERM we are in
 case $TERM in
   xterm*|konsole*)
-    alias vim='vimargs';
-    alias weechat='weechatargs';
-    alias newsboat='newsboatargs';
-    alias ranger='rangerargs';
-    alias ssh='kitty +kitten ssh';
-    alias nvim="vim";;
+     alias vim='nvim';
+     alias ssh='kitty +kitten ssh';;
   linux)
     alias vim="nvim";;
   *)
@@ -61,34 +57,6 @@ export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
 export FZF_DEFAULT_OPTS="--color='bg:#000000,bg+:#000000,info:#00EE00,border:#6B6B6B,spinner:#98BC99' \
         --color='hl:#719872,fg:#D9D9D9,header:#719872,fg+:#D9D9D9' \
         --color='pointer:#0000ff,marker:#E17899,prompt:#98BEDE,hl+:#98BC99'"
-
-vimargs() {
-  #do things with parameters like $1 such as
-  COLUMNS=
-  LINES=
-  (kitty --class vim -e nvim "$@" & ) > /dev/null 2>&1
-}
-
-weechatargs() {
-  #do things with parameters like $1 such as
-  COLUMNS=
-  LINES=
-  (kitty --class weechat -e weechat "$@" & ) > /dev/null 2>&1
-}
-
-newsboatargs() {
-  #do things with parameters like $1 such as
-  COLUMNS=
-  LINES=
-  (kitty --class newsboat -e newsboat "$@" & ) > /dev/null 2>&1 
-}
-
-rangerargs() {
-  #do thngs with parameters like $1 such as
-  COLUMNS=
-  LINES=
-  (kitty --class ranger -e ranger "$@" & ) > /dev/null 2>&1
-}
 
 # startx if on matching VT
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
